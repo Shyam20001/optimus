@@ -3,6 +3,7 @@ import chalk from "chalk";
 // import _ from 'lodash'
 import express, { Response, Request } from "express";
 import ViteExpress from "vite-express";
+import contactRoute from './contact.js';
 
 
 // const userSchema = z.object({     
@@ -34,6 +35,8 @@ import ViteExpress from "vite-express";
 const PORT: any = process.env.PROD_PORT || '3000'
 
 const app = express();
+
+app.use('/contact', contactRoute);
 
 app.get("/hello", (req: Request, res: Response) => {
   res.send("Hello Vite + React + TypeScript!");

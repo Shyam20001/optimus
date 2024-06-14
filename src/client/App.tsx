@@ -1,44 +1,40 @@
-import "./App.css";
+import React from 'react';
+import Header from './components/Header';
+import ContactForm from './components/ContactForm';
+import ProjectCard from './components/ProjectCard';
+import EducationCard from './components/EducationCard';
 
-import { useState } from "react";
-import Home from "./components/Home";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-import reactLogo from "./assets/react.svg";
-
-function App() {
-  const [count, setCount] = useState(0);
-
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-        <Route path="/home" element={<Home />} />
-        </Routes>
-      </BrowserRouter>
-      <h1 className="text-9xl font-bold underline">Hello world!</h1>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div className="bg-gray-100 min-h-screen">
+      <Header />
+      <main className="container mx-auto p-4">
+        <section id="about" className="my-8">
+          <h2 className="text-2xl font-bold">About Me</h2>
+          <p>To work in a highly competitive environment with a perfect challenge by contributing the best for the growth of the company...</p>
+        </section>
+        <section id="projects" className="my-8">
+          <h2 className="text-2xl font-bold">Projects</h2>
+          <ProjectCard title="Stack Analysis Using Web Development" description="Analyzed and enhanced software systems for improved performance at JP Morgan." />
+          <ProjectCard title="Army Soldiers Health and Wellness Observing Sensors Embedded Safeguard Helmet Using IoT" description="Monitored the health and safety of soldiers through sensor-equipped helmets." />
+          <ProjectCard title="Travel and Tour Website" description="Created an interactive and user-friendly platform for travel and tour services using HTML, CSS, and JavaScript." />
+        </section>
+        <section id="education" className="my-8">
+          <h2 className="text-2xl font-bold">Education</h2>
+          <EducationCard school="Kshatriya girl's Higher Secondary School, Virudhunagar" degree="SSLC" percentage="88%" year="2018-2019" />
+          <EducationCard school="Kshatriya girl's Higher Secondary School, Virudhunagar" degree="HSC" percentage="90.74%" year="2019-2021" />
+          <EducationCard school="V.S.B Engineering College, Karur" degree="Engineering" cgpa="8.15" year="2021-2023" />
+        </section>
+        <section id="contact" className="my-8">
+          <h2 className="text-2xl font-bold">Contact Me</h2>
+          <ContactForm />
+        </section>
+      </main>
+      <footer className="bg-gray-800 text-white text-center p-4">
+        <p>© 2024 Susmitha M. All rights reserved.</p>
+      </footer>
     </div>
   );
-}
+};
 
 export default App;
