@@ -15,14 +15,14 @@ router.post('/', async (req, res) => {
   const transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
-      user: import.meta.env.VITE_Gmail,
-      pass: import.meta.env.VITE_GPWD,
+      user: process.env.VITE_Gmail,
+      pass: process.env.VITE_GPWD,
     },
   });
 
   const mailOptions = {
     from: email,
-    to: import.meta.env.VITE_Rceiv,
+    to: process.env.VITE_Rceiv,
     subject: `Contact form submission from ${name} with the email id ${email}`,
     text: message,
   };

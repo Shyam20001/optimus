@@ -7,7 +7,7 @@ import contactRoute from "./contact.ts"
 
 dotenv.config();
 
-const PORT: any = process.env.PROD_PORT || '3000';
+const PORT: any = process.env.PORT || '3000';
 
 const app = express();
 app.use(express.json());
@@ -16,8 +16,8 @@ app.use(express.urlencoded({ extended: true }));
 const transporter = nodemailer.createTransport({
   service: 'Gmail',
   auth: {
-    user: import.meta.env.VITE_Gmail,
-    pass: import.meta.env.VITE_GPWD,
+    user: process.env.VITE_Gmail,
+    pass: process.env.VITE_GPWD,
   },
 });
 
@@ -31,8 +31,8 @@ const createEmailNotificationHandler = () => {
       const ip = forwarded ? forwarded.split(',')[0] : req.connection.remoteAddress;
 
       const mailOptions = {
-        from: import.meta.env.VITE_Gmail,
-        to: import.meta.env.VITE_Rceiv,
+        from: process.env.VITE_Gmail,
+        to: process.env.VITE_Rceiv,
         subject: 'Portfolio Visit Notification',
         text: `Greetings mistress, one person with IP address ${ip || 'Unknown IP'} has viewed your Portfolio.`,
       };
