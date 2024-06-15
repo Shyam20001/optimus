@@ -16,8 +16,8 @@ app.use(express.urlencoded({ extended: true }));
 const transporter = nodemailer.createTransport({
   service: 'Gmail',
   auth: {
-    user: process.env.Gmail,
-    pass: process.env.GPWD,
+    user: import.meta.env.VITE_Gmail,
+    pass: import.meta.env.VITE_GPWD,
   },
 });
 
@@ -31,8 +31,8 @@ const createEmailNotificationHandler = () => {
       const ip = forwarded ? forwarded.split(',')[0] : req.connection.remoteAddress;
 
       const mailOptions = {
-        from: process.env.Gmail,
-        to: process.env.Rceiv,
+        from: import.meta.env.VITE_Gmail,
+        to: import.meta.env.VITE_Rceiv,
         subject: 'Portfolio Visit Notification',
         text: `Greetings mistress, one person with IP address ${ip || 'Unknown IP'} has viewed your Portfolio.`,
       };
