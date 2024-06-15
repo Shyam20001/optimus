@@ -23,7 +23,7 @@ router.post('/', async (req, res) => {
   const mailOptions = {
     from: email,
     to: process.env.VITE_Rceiv,
-    subject: `Contact form submission from ${name} | email id- ${email}`,
+    subject: `Contact form submission from - ${name} | 📧 - ${email}`,
     text: message,
   };
 
